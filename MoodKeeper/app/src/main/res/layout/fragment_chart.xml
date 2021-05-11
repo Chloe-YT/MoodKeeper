@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/month_choose"
+            android:layout_width="284dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:background="@drawable/shape_button"
+            android:text="2021"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <view
+            android:id="@+id/line_chart"
+            android:layout_width="330dp"
+            android:layout_height="250dp"
+            android:background="@drawable/shape_graph"
+            class="com.github.mikephil.charting.charts.LineChart"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/month_choose"
+            android:layout_marginTop="15dp"/>
+
+        <view
+            android:id="@+id/bar_chart"
+            android:layout_width="330dp"
+            android:layout_height="270dp"
+            android:background="@drawable/shape_graph"
+            class="com.github.mikephil.charting.charts.BarChart"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/line_chart"
+            android:layout_marginTop="15dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

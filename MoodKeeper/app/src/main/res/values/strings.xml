@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MoodKeeper</string>
+    <string name="tab_text_1">浏览</string>
+    <string name="tab_text_2">图表</string>
+    <string name="tab_text_3">日历</string>
+</resources>

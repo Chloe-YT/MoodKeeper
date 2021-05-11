@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/diary_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="10dp"
+        app:contentPadding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/diary_title_cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="标题"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/cardview_dark_background"
+                android:maxLines="1"
+                android:maxEms="6"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/diary_date_cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:text="日期"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/diary_content_cv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
+                android:text="内容"
+                android:textSize="15sp"
+                android:maxLines="1"
+                android:maxEms="12"
+                android:ellipsize="end"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/diary_category_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:text="类别"
+                android:textSize="15sp"/>
+
+<!--            <TextView-->
+<!--                android:id="@+id/diary_mood_cv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_toRightOf="@id/diary_weather_cv"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:text="心情"-->
+<!--                android:textSize="15sp"/>-->
+
+            <ImageView
+                android:id="@+id/diary_mood_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_toRightOf="@id/diary_category_tv"
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"/>
+
+            <ImageView
+                android:id="@+id/diary_weather_iv"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_toRightOf="@id/diary_mood_iv"
+                android:layout_marginLeft="10dp"
+                android:scaleType="centerCrop"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
