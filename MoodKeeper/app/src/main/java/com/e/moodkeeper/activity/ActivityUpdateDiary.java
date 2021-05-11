@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.e.moodkeeper.R;
+import com.e.moodkeeper.viewmodel.UserViewModel;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.text.SimpleDateFormat;
@@ -23,10 +26,14 @@ import java.util.Date;
 import dao.DiaryDAO;
 import dao.DiaryDAOImpl;
 import pojo.Diary;
+import pojo.User;
 
 public class ActivityUpdateDiary extends AppCompatActivity implements View.OnClickListener {
 
-    Diary diary;
+    private Diary diary;
+    private User user;
+
+    private UserViewModel userViewModel;
 
     private TextView cancelUpdateTv;
     private TextView saveUpdateTv;
@@ -65,6 +72,20 @@ public class ActivityUpdateDiary extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_diary);
 
+        // AndroidViewModel 初始化方式
+        userViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication()))
+                .get(UserViewModel.class);
+        // 观察者动态更新 UI
+        userViewModel.getUser().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                // 登录成功
+                if (user != null) {
+                    user_id = user.getId();
+                }
+            }
+        });
+
         cancelUpdateTv = (TextView) findViewById(R.id.cancel1);
         cancelUpdateTv.setOnClickListener(this);
 
@@ -98,7 +119,7 @@ public class ActivityUpdateDiary extends AppCompatActivity implements View.OnCli
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
 //                Snackbar.make(view, "Clicked" + item, Snackbar.LENGTH_LONG).show();
                 category_id = position + 1;
-                Log.d("AddDiaryActivityNew", String.valueOf(category_id));
+                Log.d("AddDiaryActivity", String.valueOf(category_id));
             }
         });
 
@@ -215,7 +236,7 @@ public class ActivityUpdateDiary extends AppCompatActivity implements View.OnCli
         } catch (Exception e) {
         }
 
-        Diary diary = new Diary(diary_id, user_id, mood_id, weather_id, category_id, diary_title, diary_content, diary_date, addState, anchor);
+        Diary diary = new Diary(diary_id, user_id, mood_id, weather_id, category_id, diary_title, diary_content, diary_date, updateState, anchor);
         DiaryDAO diaryDAO = new DiaryDAOImpl();
         diaryDAO.updateDiary(diary);
 
@@ -228,6 +249,8 @@ public class ActivityUpdateDiary extends AppCompatActivity implements View.OnCli
         DiaryDAO diaryDAO = new DiaryDAOImpl();
         diaryDAO.deleteDiary(diary_id);
         finish();
+
+//        diaryDAO.setState(diary_id, deleteState);
     }
 
 }

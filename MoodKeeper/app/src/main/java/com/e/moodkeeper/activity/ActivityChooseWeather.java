@@ -67,7 +67,7 @@ public class ActivityChooseWeather extends AppCompatActivity implements View.OnC
                 chooseWeatherAdapter.notifyDataSetChanged();
                 Weather weather = weatherList.get(position);
                 weather_id = weather.getWeather_id();
-                Intent intent = new Intent(ActivityChooseWeather.this, AddDiaryActivityNew.class);
+                Intent intent = new Intent(ActivityChooseWeather.this, AddDiaryActivity.class);
                 Bundle bundle1 = new Bundle();
                 bundle1.putInt("mood_id", mood_id);
                 bundle1.putInt("weather_id", weather_id);
@@ -86,7 +86,7 @@ public class ActivityChooseWeather extends AppCompatActivity implements View.OnC
                 finish();
                 break;
             case R.id.to_write_content:
-                Intent intent1 = new Intent(ActivityChooseWeather.this, AddDiaryActivityNew.class);
+                Intent intent1 = new Intent(ActivityChooseWeather.this, AddDiaryActivity.class);
                 startActivityForResult(intent1, 1);
                 break;
         }

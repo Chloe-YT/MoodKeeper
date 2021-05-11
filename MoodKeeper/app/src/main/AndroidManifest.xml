@@ -33,19 +33,13 @@
 
         <activity android:name=".activity.JudgeActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.ActivityLogin"
-            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.ActivityRegister"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.ActivityChooseMood"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.ActivityChooseWeather"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.AddDiaryActivityNew"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.AddDiaryActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
