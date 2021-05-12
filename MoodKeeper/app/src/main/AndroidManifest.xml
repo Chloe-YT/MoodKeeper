@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.JudgeActivity"
+        <activity android:name=".activity.LauncherActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
@@ -51,6 +51,8 @@
             android:theme="@style/myTransparent"/>
         <activity android:name=".activity.ActivityShowMood"
             android:theme="@style/myTransparent"/>
+        <activity android:name=".activity.MessageUpdateActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
     </application>
 

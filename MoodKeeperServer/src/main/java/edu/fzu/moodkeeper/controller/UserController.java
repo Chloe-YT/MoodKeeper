@@ -308,6 +308,47 @@ public class UserController extends BaseController {
     }
 
     /**
+     * 用户修改个人信息接口
+     * @param telephone
+     * @param name
+     * @param ageStr
+     * @param genderStr
+     * @param password
+     * @return
+     * @throws UnsupportedEncodingException
+     * @throws NoSuchAlgorithmException
+     * @throws BusinessException
+     */
+    @RequestMapping(value = "/update", method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
+    @ResponseBody
+    public CommonReturnType updateMessage(
+            @RequestParam(name = "id") int id,
+            @RequestParam(name = "telephone") String telephone,
+            @RequestParam(name = "name") String name,
+            @RequestParam(name = "age") String ageStr,
+            @RequestParam(name = "gender") String genderStr,
+            @RequestParam(name = "password") String password
+    ) throws UnsupportedEncodingException, NoSuchAlgorithmException, BusinessException {
+
+        // 类型转换，适配数据库
+        int age = Integer.parseInt(ageStr);
+        Byte gender = Byte.parseByte(genderStr);
+        // 验证码通过后，进行注册流程
+//        UserModel userModel = new UserModel();
+        UserModel userModel = userService.getUserById(id);
+        userModel.setName(name);
+        userModel.setGender(gender);
+        userModel.setAge(age);
+        userModel.setTelephone(telephone);
+        userModel.setRegisterMode("byphone");
+        userModel.setEncryptPassword(this.EncodeByMd5(password));
+
+        userService.updateMessage(userModel);
+        // 注册成功，只返回success即可
+        return CommonReturnType.create(userModel);
+    }
+
+    /**
      * MD5加密+BASE64编码
      *
      * @return 加密后字符串

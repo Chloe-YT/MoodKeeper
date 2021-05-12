@@ -10,4 +10,5 @@
     <color name="colorTransparent">#009E9E9E</color>
     <color name="content_background">#f2f2f2</color>
     <color name="green">#87c38f</color>
+    <color name="grey">#FAFAFA</color>
 </resources>

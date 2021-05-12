@@ -1,6 +1,7 @@
-package com.e.moodkeeper.ui.fragment;
+package com.e.moodkeeper.fragment;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,6 +128,7 @@ public class ShowChartFragment extends Fragment {
         initLineChart(lineChart);
         initLineChartData(monthBeginDate, monthEndDate);
         LineDataSet lineDataSet = new LineDataSet(lineChartList,"心情");
+        initLineDataSet(lineDataSet, Color.rgb(187,59,14), LineDataSet.Mode.LINEAR);
         LineData lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
         lineData.setValueFormatter(new ValueFormatter() {
@@ -161,6 +163,7 @@ public class ShowChartFragment extends Fragment {
         YAxis leftYAxis;            //左侧Y轴
         YAxis rightYaxis;           //右侧Y轴
         /*图表设置*/
+        lineChart1.setScaleEnabled(true);
         //是否展示网格线
         lineChart1.setDrawGridBackground(false);
         //是否显示边界
@@ -199,35 +202,36 @@ public class ShowChartFragment extends Fragment {
 //        leftYAxis.setEnabled(false);
         leftYAxis.enableGridDashedLine(10f, 10f, 0f);
         leftYAxis.setLabelCount(9,false);
+        leftYAxis.setGranularity(1f);
         leftYAxis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
                 if (value == 1) {
-                    return "开心";
+                    return "其他";
                 }
                 if (value == 2) {
-                    return "不开心";
+                    return "生气";
                 }
                 if (value == 3) {
-                    return "3";
+                    return "伤心";
                 }
                 if (value == 4) {
-                    return "4";
+                    return "疲惫";
                 }
                 if (value == 5) {
-                    return "5";
+                    return "平静";
                 }
                 if (value == 6) {
-                    return "6";
+                    return "努力";
                 }
                 if (value == 7) {
-                    return "7";
+                    return "充实";
                 }
                 if (value == 8) {
-                    return "8";
+                    return "得意";
                 }
                 if (value == 9) {
-                    return "9";
+                    return "开心";
                 }
                 return "";
             }
@@ -249,10 +253,11 @@ public class ShowChartFragment extends Fragment {
     }
 
     public void initBarChart(BarChart barChart1) {
+        barChart1.setNoDataText("没有数据");  //没有数据时显示的文字
+        barChart1.setScaleEnabled(true);
         //X轴
         XAxis xAxis = barChart1.getXAxis();
         xAxis.setDrawGridLines(false);  //是否绘制X轴上网格线
-        xAxis.setAxisLineWidth(2);  //X轴粗细
         barChart1.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);  //X轴的位置，默认为上面
 
         xAxis.setLabelCount(9, false);
@@ -263,28 +268,28 @@ public class ShowChartFragment extends Fragment {
                     return "开心";
                 }
                 if (value == 2) {
-                    return "不开心";
+                    return "得意";
                 }
                 if (value == 3) {
-                    return "3";
+                    return "充实";
                 }
                 if (value == 4) {
-                    return "4";
+                    return "努力";
                 }
                 if (value == 5) {
-                    return "5";
+                    return "平静";
                 }
                 if (value == 6) {
-                    return "6";
+                    return "疲惫";
                 }
                 if (value == 7) {
-                    return "7";
+                    return "伤心";
                 }
                 if (value == 8) {
-                    return "8";
+                    return "生气";
                 }
                 if (value == 9) {
-                    return "9";
+                    return "其他";
                 }
                 return "";
             }
@@ -294,17 +299,7 @@ public class ShowChartFragment extends Fragment {
         YAxis yAxisLeft = barChart1.getAxisLeft();
 //        YAxis yAxisRight = barChart.getAxisRight();
         yAxisLeft.setDrawGridLines(false);  //是否绘制Y轴上的网格线
-//        yAxisRight.setDrawGridLines(false);
-//        yAxisLeft.setValueFormatter(new ValueFormatter() {
-//            @Override
-//            public String getFormattedValue(float value) {
-//                String str = value + "";
-//                if (str.length() == 0) {
-//                    return str;
-//                }
-//                return str.substring(0, str.indexOf("."));
-//            }
-//        });
+        yAxisLeft.setGranularity(1f);
 
         barChart1.getAxisRight().setEnabled(false);
 
@@ -325,6 +320,27 @@ public class ShowChartFragment extends Fragment {
 
         barChart1.setDrawBarShadow(false);
 
+    }
+
+    private void initLineDataSet(LineDataSet lineDataSet, int color, LineDataSet.Mode mode) {
+        lineDataSet.setColor(color);
+        lineDataSet.setCircleColor(color);
+        lineDataSet.setLineWidth(1f);
+        lineDataSet.setCircleRadius(3f);
+        lineDataSet.setDrawValues(false);
+        //设置曲线值的圆点是实心还是空心
+        lineDataSet.setDrawCircles(false);
+        //设置折线图填充
+        lineDataSet.setDrawFilled(true);
+        lineDataSet.setFormLineWidth(1f);
+        lineDataSet.setFormSize(15.f);
+        if (mode == null) {
+            //设置曲线展示为圆滑曲线（如果不设置则默认折线）
+            lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        }
+        else {
+            lineDataSet.setMode(mode);
+        }
     }
 
 
@@ -377,6 +393,7 @@ public class ShowChartFragment extends Fragment {
 
         lineChartList.addAll(initLineChartData(beginDate1,endDate1));
         LineDataSet lineDataSet = new LineDataSet(lineChartList,"心情");
+        initLineDataSet(lineDataSet, Color.rgb(187,59,14), LineDataSet.Mode.LINEAR);
         LineData lineData = new LineData(lineDataSet);
         lineChart.setData(lineData);
 

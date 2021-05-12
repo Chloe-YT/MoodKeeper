@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.e.moodkeeper.R;
-import com.e.moodkeeper.ui.fragment.ShowDiaryFragment;
-import com.e.moodkeeper.ui.fragment.ShowCalendarFragment;
-import com.e.moodkeeper.ui.fragment.ShowChartFragment;
+import com.e.moodkeeper.fragment.ShowDiaryFragment;
+import com.e.moodkeeper.fragment.ShowCalendarFragment;
+import com.e.moodkeeper.fragment.ShowChartFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 

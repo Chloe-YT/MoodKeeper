@@ -3,212 +3,225 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/back_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@mipmap/ic_back"/>
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textAlignment="center"
-        android:text="注 册"
-        android:textSize="30sp"
-        android:textColor="@color/blue"/>
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="25dp"
-        android:orientation="vertical">
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/back_iv"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_centerVertical="true"
-                android:tint="?attr/colorAccent"
-                android:background="@mipmap/ic_user"/>
-
-            <EditText
-                android:id="@+id/register_phone_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
-                android:layout_marginRight="10dp"
-                android:hint="请输入手机号码"
-                android:ems="10"
-                android:maxLength="11"
-                android:inputType="phone" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/ic_black_back"/>
 
             <TextView
-                android:id="@+id/get_otp_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:text="获取验证码"
+                android:layout_marginTop="35dp"
+                android:textAlignment="center"
+                android:text="注 册"
+                android:textSize="30sp"
+                android:textColor="@color/blue"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:tint="?attr/colorAccent"
+                        android:background="@mipmap/ic_user"/>
+
+                    <EditText
+                        android:id="@+id/register_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginRight="10dp"
+                        android:hint="请输入手机号码"
+                        android:ems="10"
+                        android:maxLength="11"
+                        android:inputType="phone" />
+
+                    <TextView
+                        android:id="@+id/get_otp_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:text="获取验证码"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:tint="?attr/colorAccent"
+                        android:background="@mipmap/ic_otpcode"/>
+
+                    <EditText
+                        android:id="@+id/otp_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginRight="10dp"
+                        android:ems="10"
+                        android:maxLength="6"
+                        android:hint="请输入验证码"
+                        android:inputType="number" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:tint="?attr/colorAccent"
+                        android:background="@mipmap/ic_name"/>
+
+                    <EditText
+                        android:id="@+id/register_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginRight="10dp"
+                        android:ems="10"
+                        android:hint="请输入用户名"
+                        android:inputType="textPersonName" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:tint="?attr/colorAccent"
+                        android:background="@mipmap/ic_gender"/>
+
+                    <EditText
+                        android:id="@+id/register_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginRight="10dp"
+                        android:ems="10"
+                        android:maxLength="1"
+                        android:hint="1代表男性 2代表女性"
+                        android:inputType="number" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:tint="?attr/colorAccent"
+                        android:background="@mipmap/ic_age"/>
+
+                    <EditText
+                        android:id="@+id/register_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginRight="10dp"
+                        android:ems="10"
+                        android:maxLength="3"
+                        android:hint="请输入年龄"
+                        android:inputType="number" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:tint="?attr/colorAccent"
+                        android:background="@mipmap/ic_password"/>
+
+                    <EditText
+                        android:id="@+id/register_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginRight="10dp"
+                        android:selectAllOnFocus="true"
+                        android:hint="请输入密码"
+                        android:inputType="textPassword" />
+
+
+                </FrameLayout>
+
+                <EditText
+                    android:id="@+id/register_password2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginRight="10dp"
+                    android:selectAllOnFocus="true"
+                    android:hint="请再次输入密码"
+                    android:inputType="textPassword" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/register_tv"
+                android:layout_width="284dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_login_button"
+                android:text="注 册"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
                 android:textSize="15sp" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical"
-                android:tint="?attr/colorAccent"
-                android:background="@mipmap/ic_otpcode"/>
-
-            <EditText
-                android:id="@+id/otp_code"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
-                android:layout_marginRight="10dp"
-                android:ems="10"
-                android:maxLength="6"
-                android:hint="请输入验证码"
-                android:inputType="number" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical"
-                android:tint="?attr/colorAccent"
-                android:background="@mipmap/ic_name"/>
-
-            <EditText
-                android:id="@+id/register_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
-                android:layout_marginRight="10dp"
-                android:ems="10"
-                android:hint="请输入用户名"
-                android:inputType="textPersonName" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical"
-                android:tint="?attr/colorAccent"
-                android:background="@mipmap/ic_gender"/>
-
-            <EditText
-                android:id="@+id/register_gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
-                android:layout_marginRight="10dp"
-                android:ems="10"
-                android:maxLength="1"
-                android:hint="1代表男性 2代表女性"
-                android:inputType="number" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical"
-                android:tint="?attr/colorAccent"
-                android:background="@mipmap/ic_age"/>
-
-            <EditText
-                android:id="@+id/register_age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
-                android:layout_marginRight="10dp"
-                android:ems="10"
-                android:maxLength="3"
-                android:hint="请输入年龄"
-                android:inputType="number" />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center_vertical"
-                android:tint="?attr/colorAccent"
-                android:background="@mipmap/ic_password"/>
-
-            <EditText
-                android:id="@+id/register_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
-                android:layout_marginRight="10dp"
-                android:selectAllOnFocus="true"
-                android:hint="请输入密码"
-                android:inputType="textPassword" />
-
-
-        </FrameLayout>
-
-        <EditText
-            android:id="@+id/register_password2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginRight="10dp"
-            android:selectAllOnFocus="true"
-            android:hint="请再次输入密码"
-            android:inputType="textPassword" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/register_tv"
-        android:layout_width="284dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center"
-        android:background="@drawable/shape_login_button"
-        android:text="注 册"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp" />
+    </ScrollView>
 
 </LinearLayout>

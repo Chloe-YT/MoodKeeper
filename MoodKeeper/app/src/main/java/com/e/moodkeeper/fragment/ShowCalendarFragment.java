@@ -1,4 +1,4 @@
-package com.e.moodkeeper.ui.fragment;
+package com.e.moodkeeper.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

@@ -68,7 +68,7 @@
                 android:layout_marginLeft="36dp"
                 android:layout_marginRight="10dp"
                 android:hint="请输入密码"
-                android:inputType="number" />
+                android:inputType="textPassword" />
 
         </FrameLayout>
 

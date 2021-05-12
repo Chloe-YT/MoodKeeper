@@ -1,4 +1,4 @@
-package com.e.moodkeeper.ui.fragment;
+package com.e.moodkeeper.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;

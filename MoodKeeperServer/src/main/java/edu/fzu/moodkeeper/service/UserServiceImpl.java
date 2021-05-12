@@ -214,5 +214,35 @@ public class UserServiceImpl implements UserService  {
         return userModel;
     }
 
+    @Override
+    @Transactional
+    public void updateMessage(UserModel userModel) throws BusinessException {
+        if (userModel == null){
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
 
+        // 优化后的model校验
+        ValidationResult result = validator.validate(userModel);
+        if (result.isHasError()){
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, result.getErrMsg());
+        }
+
+        // model --->  dataobject:UserDO
+        // 之所以使用insertSelective方法，这样可以避免使用null字段，而使用设计数据库时的默认值
+        UserDO userDO = convertFromModel(userModel);
+        try {
+            userDOMapper.updateByPrimaryKeySelective(userDO);
+        }catch (DuplicateKeyException ex){
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR,"手机号已重复注册");
+        }
+
+        userModel.setId(userDO.getId());
+
+        UserPasswordDO userPasswordDO =userPasswordDOMapper.selectByUserId(userDO.getId());
+        userPasswordDO.setEncryptPassword(userModel.getEncryptPassword());
+
+        userPasswordDOMapper.updateByPrimaryKeySelective(userPasswordDO);
+
+    }
 }

@@ -169,7 +169,9 @@ public class MineActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.personal_message:
-                Toast.makeText(this, "You click 1", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(MineActivity.this, MessageUpdateActivity.class);
+                startActivity(intent2);
+                finish();
                 break;
             case R.id.recover_data_rl:
                 Toast.makeText(this, "You click 2", Toast.LENGTH_SHORT).show();
