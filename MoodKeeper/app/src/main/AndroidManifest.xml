@@ -35,6 +35,8 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.FindPasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.ActivityChooseMood"

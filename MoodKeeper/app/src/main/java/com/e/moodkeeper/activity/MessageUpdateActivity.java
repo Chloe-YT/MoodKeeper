@@ -150,7 +150,7 @@ public class MessageUpdateActivity extends AppCompatActivity implements View.OnC
                 break;
             case R.id.save_edit:
                 //保存修改
-                asyncRegisterWithXHttp2(id, telephone, username, gender, age, password);
+                asyncUpdateMessageWithXHttp2(id, telephone, username, gender, age, password);
                 break;
         }
     }
@@ -207,14 +207,14 @@ public class MessageUpdateActivity extends AppCompatActivity implements View.OnC
                 .show();
     }
 
-    private void asyncRegisterWithXHttp2(final int id,
+    private void asyncUpdateMessageWithXHttp2(final int id,
                                          final String telephone,
                                          final String username,
                                          final String gender,
                                          final String age,
                                          final String password) {
 
-        // 注册
+        // 修改信息
         XHttp.post(NetConstant.getUpdateMessageURL())
                 .params("id",id)
                 .params("telephone", telephone)

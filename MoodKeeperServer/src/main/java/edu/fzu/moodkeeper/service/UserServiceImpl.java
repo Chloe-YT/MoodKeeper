@@ -81,6 +81,20 @@ public class UserServiceImpl implements UserService  {
         }
     }
 
+    @Override
+    public UserModel getUserByTelephone1(String telephone) {
+        UserDO userDO = userDOMapper.selectByTelephone(telephone);
+
+        /* userDO的判空处理 */
+        if (userDO == null){ return  null; }
+        /* 通过UserDO的id查询到关联表user_password中的关联数据 */
+        UserPasswordDO userPasswordDO = userPasswordDOMapper.selectByUserId(userDO.getId());
+
+        /* 调用方法，整合UserDO和UserPasswordDO为userModel并返回给Controller */
+        return convertFromDataObject(userDO, userPasswordDO);
+
+    }
+
     /* 整合业务需要的所有属性为UserModel，这里为两张表的所有属性 */
     private UserModel convertFromDataObject(UserDO userDO, UserPasswordDO userPasswordDO){
         /* UserDO的判空处理 */
@@ -244,5 +258,35 @@ public class UserServiceImpl implements UserService  {
 
         userPasswordDOMapper.updateByPrimaryKeySelective(userPasswordDO);
 
+    }
+
+    @Override
+    public void findPassword(UserModel userModel) throws BusinessException {
+        if (userModel == null){
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
+        }
+
+        // 优化后的model校验
+        ValidationResult result = validator.validate(userModel);
+        if (result.isHasError()){
+            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR, result.getErrMsg());
+        }
+
+        // model --->  dataobject:UserDO
+        // 之所以使用insertSelective方法，这样可以避免使用null字段，而使用设计数据库时的默认值
+        UserDO userDO = convertFromModel(userModel);
+//        try {
+//            userDOMapper.updateByPrimaryKeySelective(userDO);
+//        }catch (DuplicateKeyException ex){
+//            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+//            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR,"手机号已重复注册");
+//        }
+
+        userModel.setId(userDO.getId());
+
+        UserPasswordDO userPasswordDO =userPasswordDOMapper.selectByUserId(userDO.getId());
+        userPasswordDO.setEncryptPassword(userModel.getEncryptPassword());
+
+        userPasswordDOMapper.updateByPrimaryKeySelective(userPasswordDO);
     }
 }

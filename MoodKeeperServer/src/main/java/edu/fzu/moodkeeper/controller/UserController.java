@@ -308,7 +308,6 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 用户修改个人信息接口
      * @param telephone
      * @param name
      * @param ageStr
@@ -344,7 +343,24 @@ public class UserController extends BaseController {
         userModel.setEncryptPassword(this.EncodeByMd5(password));
 
         userService.updateMessage(userModel);
-        // 注册成功，只返回success即可
+
+        return CommonReturnType.create(userModel);
+    }
+
+    @RequestMapping(value = "/find", method = {RequestMethod.POST}, consumes = {CONTENT_TYPE_FORMED})
+    @ResponseBody
+    public CommonReturnType findPassword(
+            @RequestParam(name = "telephone") String telephone,
+            @RequestParam(name = "password") String password
+    ) throws UnsupportedEncodingException, NoSuchAlgorithmException, BusinessException {
+
+//        UserModel userModel = new UserModel();
+        UserModel userModel = userService.getUserByTelephone1(telephone);
+        userModel.setRegisterMode("byphone");
+        userModel.setEncryptPassword(this.EncodeByMd5(password));
+
+        userService.updateMessage(userModel);
+
         return CommonReturnType.create(userModel);
     }
 

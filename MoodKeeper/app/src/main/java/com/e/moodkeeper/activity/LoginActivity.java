@@ -2,16 +2,20 @@ package com.e.moodkeeper.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.e.moodkeeper.R;
@@ -35,6 +39,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     // Log打印的通用Tag
     private final String TAG = "LoginActivity";
+    private String findPhone = "";
+
+    private String password;
 
     private boolean isLogin = false;
 
@@ -50,8 +57,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Intent intent = getIntent();
+        findPhone = intent.getStringExtra("telephone");
+
         loginPhoneNumber = findViewById(R.id.login_phone_number);
         loginPhoneNumber.setOnClickListener(this);
+        loginPhoneNumber.setText(findPhone);
 
         loginPassword = findViewById(R.id.login_password);
         loginPassword.setOnClickListener(this);
@@ -92,6 +103,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.tv_forget_password:
                 //忘记密码
+                Intent intent2 = new Intent(LoginActivity.this, FindPasswordActivity.class);
+                intent2.putExtra("phone", account);
+                startActivity(intent2);
                 break;
             case R.id.login_tv:
                 //登录

@@ -6,6 +6,7 @@ public class NetConstant {
     private static final String getOtpCodeURL     = "/user/getOtp";
     private static final String loginURL          = "/user/login";
     private static final String registerURL       = "/user/register";
+    private static final String findPasswordURL   = "/user/find";
 
     private static final String updateMessageURL = "/user/update";
 
@@ -29,6 +30,10 @@ public class NetConstant {
 
     public static String getRegisterURL() {
         return registerURL;
+    }
+
+    public static String getFindPasswordURL() {
+        return findPasswordURL;
     }
 
     public static String getUpdateMessageURL() {

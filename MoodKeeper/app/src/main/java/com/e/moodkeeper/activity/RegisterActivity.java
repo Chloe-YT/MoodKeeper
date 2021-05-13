@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     protected Toast toast;
 
-    String account = "";
+    private String account = "";
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 

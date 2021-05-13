@@ -15,9 +15,13 @@ public interface UserService {
     /* 用户获取手机验证码时需要用到 */
     public Boolean getUserByTelephone(String telephone);
 
+    public UserModel getUserByTelephone1(String telephone);
+
     void register(UserModel userModel) throws BusinessException;
 
     void updateMessage(UserModel userModel) throws BusinessException;
+
+    void findPassword(UserModel userModel) throws BusinessException;
 
     UserModel validateLogin(String telphone, String encryptPassword) throws BusinessException;
 }
